@@ -1,5 +1,7 @@
 import React from 'react';
 import Join from '../container/Join';
+import UserList from '../container/UserList';
+import Sender from '../container/Sender';
 
 export default function Chat(props){
   const {me} = props;
@@ -12,9 +14,10 @@ export default function Chat(props){
           Messages
         </div>
         <div className="columns four">
-          User
+          <UserList />
         </div>
       </div>
+      <Sender />
     </div>;
   }
 }

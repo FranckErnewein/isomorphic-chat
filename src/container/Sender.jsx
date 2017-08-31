@@ -7,8 +7,9 @@ class Sender extends Component {
     e.preventDefault();
     const {me} = this.props;
     const form = e.currentTarget;
+    const input = form.elements['text'];
     const payload = {
-      text: form.elements['text'].value,
+      text: input.value,
       date: Date.now(),
       user: me
     };
@@ -16,6 +17,7 @@ class Sender extends Component {
       type: 'NEW_MESSAGE',
       payload
     });
+    input.value = '';
   }
   render() {
     return <MessageSender onSubmit={(e) => this.onSubmit(e)} />;

@@ -1,23 +1,21 @@
 import React from 'react';
 import Join from '../container/Join';
 import UserList from '../container/UserList';
+import MessageList from '../container/MessageList';
 import Sender from '../container/Sender';
 
-export default function Chat(props){
+export default function Chat(props) {
   const {me} = props;
-  if(!me){
-    return <Join />;
-  }else{
-    return <div className="Chat">
-      <div className="row">
-        <div className="columns eight">
-          Messages
-        </div>
-        <div className="columns four">
-          <UserList />
-        </div>
+  return <div className="Chat">
+    <div className="row">
+      <div className="columns eight">
+        <MessageList />
+        {me ? <Sender /> : null}
       </div>
-      <Sender />
-    </div>;
-  }
+      <div className="columns four">
+        <UserList />
+        {me ? null : <Join />}
+      </div>
+    </div>
+  </div>;
 }

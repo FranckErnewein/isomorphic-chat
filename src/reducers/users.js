@@ -6,8 +6,15 @@ const ACTIONS = {
     return Object.assign({}, state, {
       [payload.name]: User(payload)
     });
+  },
+  USER_DISCONNECTED: (state, payload) => {
+    return Object.keys(state).reduce((memo, userName) => {
+      if(userName !== payload.name){
+        memo[userName] = state[userName];
+      }
+      return memo;
+    }, {});
   }
-
 };
 
 function def(state){

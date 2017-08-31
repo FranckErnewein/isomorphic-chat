@@ -1,7 +1,6 @@
 /* global expect */
 const reducer = require('./users');
 
-
 describe('users reducer', () => {
 
   it('should init with an empty hash', () => {
@@ -34,6 +33,7 @@ describe('users reducer', () => {
       }
     });
   });
+
   it('should add franck', () => {
     expect(reducer({
       Franck: {
@@ -47,6 +47,26 @@ describe('users reducer', () => {
     }, {})).toEqual({
       Franck: {
         name: 'Franck'
+      }
+    });
+  });
+
+  it('should remove user', () => {
+    expect(reducer({
+      Franck: {
+        name: 'Franck'
+      },
+      Arnold: {
+        name: 'Arnold'
+      }
+    }, {
+      type: 'USER_DISCONNECTED',
+      payload: {
+        name: 'Franck'
+      }
+    }, {})).toEqual({
+      Arnold: {
+        name: 'Arnold'
       }
     });
   });
